@@ -230,7 +230,9 @@ class DateController with ChangeNotifier {
 
     _dayController = _dayController.copyWith(selectedIndex: selectedIndex, numberOfDays: numberOfDays);
 
-    notifyListeners();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      notifyListeners();
+    });
   }
 
   /// Called when the [initialDate] of the [ScrollWheelDatePicker] changed.
